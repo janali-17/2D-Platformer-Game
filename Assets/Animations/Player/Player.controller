@@ -68,7 +68,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Crouch
     m_EventTreshold: 0
   - m_ConditionMode: 4
-    m_ConditionEvent: IsRuning
+    m_ConditionEvent: IsRunning
     m_EventTreshold: 0.25
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2122739982754494107}
@@ -153,7 +153,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Crouch
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: IsRuning
+    m_ConditionEvent: IsRunning
     m_EventTreshold: 0.25
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7583259879444340625}
@@ -178,7 +178,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: IsRuning
+    m_ConditionEvent: IsRunning
     m_EventTreshold: 0.25
   - m_ConditionMode: 2
     m_ConditionEvent: Jump
@@ -231,7 +231,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: IsRuning
+    m_ConditionEvent: IsRunning
     m_EventTreshold: 0.25
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7583259879444340625}
@@ -256,7 +256,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: IsRuning
+    m_ConditionEvent: IsRunning
     m_EventTreshold: 0.25
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2122739982754494107}
@@ -281,9 +281,9 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: IsRuning
+  - m_Name: IsRunning
     m_Type: 1
-    m_DefaultFloat: 1
+    m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -320,7 +320,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player_Idle
-  m_Speed: 0
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2171456103604630166}
@@ -377,7 +377,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Jump
     m_EventTreshold: 0
   - m_ConditionMode: 4
-    m_ConditionEvent: IsRuning
+    m_ConditionEvent: IsRunning
     m_EventTreshold: 0.25
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2122739982754494107}
