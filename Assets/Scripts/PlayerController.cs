@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
 
     private float jump;
     private bool crouch;
@@ -23,14 +25,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        jump = Input.GetAxisRaw("Vertical");
+        PLayerMovementAnimation(horizontal);
+        PlayerMovement(horizontal);
     }
 
-    private void Movement()
+
+    private void PlayerMovement(float horizontal)
     {
-        float speed = Input.GetAxisRaw("Horizontal");
-        jump = Input.GetAxisRaw("Vertical");
-        animator.SetFloat(IS_RUNNING, Mathf.Abs(speed));
+        Vector3 postion = transform.position;
+        postion.x +=  horizontal * speed * Time.deltaTime;
+        transform.position = postion;
+
+        if(jump > 0)
+        {
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+        }
+    }
+
+    private void PLayerMovementAnimation(float horizontal)
+    {
+        animator.SetFloat(IS_RUNNING, Mathf.Abs(horizontal));
         Jump();
 
         if (Input.GetKey(KeyCode.LeftControl))
@@ -42,10 +58,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (speed < 0f) {
+        if (horizontal < 0f) {
             spriteRenderer.flipX = true;
         }
-        else if (speed > 0f)
+        else if (horizontal > 0f)
         {
             spriteRenderer.flipX = false;
         }
