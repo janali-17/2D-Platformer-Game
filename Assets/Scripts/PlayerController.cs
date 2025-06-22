@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-        jump = Input.GetAxisRaw("Vertical");
+        jump = Input.GetAxisRaw("Jump");
         PLayerMovementAnimation(horizontal);
         PlayerMovement(horizontal);
     }
