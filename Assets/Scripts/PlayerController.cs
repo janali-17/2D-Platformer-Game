@@ -13,14 +13,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private ScoreController scoreController;
 
     private float jump;
     private bool crouch;
 
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -79,5 +76,9 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+    public void CollectKey()
+    {
+        int score = 10;
+        scoreController.IncrementScore(score); 
+    }
 }
