@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private ScoreController scoreController;
+    [SerializeField] private LayerMask _layerMask;
 
+    private bool _resetJumpNeeded = false;
+    private bool _isGrounded = false;
     private float jump;
     private bool crouch;
 
@@ -23,7 +26,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-        jump = Input.GetAxisRaw("Jump");
+       // if(IsGrounded())jump = Input.GetAxisRaw("Jump");
         PLayerMovementAnimation(horizontal);
         PlayerMovement(horizontal);
     }
@@ -34,17 +37,20 @@ public class PlayerController : MonoBehaviour
         Vector3 postion = transform.position;
         postion.x +=  horizontal * speed * Time.deltaTime;
         transform.position = postion;
+        _isGrounded = IsGrounded();
 
-        if(jump > 0)
+        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
         {
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+            Debug.Log("Space is being pressed");
+            animator.SetBool(JUMP, true);
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
+
     }
 
     private void PLayerMovementAnimation(float horizontal)
     {
         animator.SetFloat(IS_RUNNING, Mathf.Abs(horizontal));
-        Jump();
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -64,21 +70,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Jump()
-    {
-        if (jump > 0)
-        {
-            animator.SetBool(JUMP, true);
-        }
-        else
-        {
-            animator.SetBool(JUMP, false);
-        }
-
-    }
     public void CollectKey()
     {
         int score = 10;
         scoreController.IncrementScore(score); 
+    }
+    private bool IsGrounded()
+    {
+        RaycastHit2D Hit = Physics2D.Raycast(transform.position, Vector2.down, .3f, _layerMask);
+        Debug.DrawRay(transform.position, Vector2.down, Color.yellow);
+        if (Hit.collider != null)
+        {
+            // Debug.Log("Grounded");
+            if (_resetJumpNeeded == false)
+            {
+                animator.SetBool(JUMP, false);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    IEnumerator resetJumpNeeded()
+    {
+        _resetJumpNeeded = true;
+        yield return new WaitForSeconds(0.5f);
+        _resetJumpNeeded = false;
     }
 }
