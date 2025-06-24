@@ -192,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 888953879116129261, guid: ad025cf1d505e45419e0b760a4e74568,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.81
+      value: 17.94
       objectReference: {fileID: 0}
     - target: {fileID: 888953879116129261, guid: ad025cf1d505e45419e0b760a4e74568,
         type: 3}
@@ -244,6 +244,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Chomper (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5680525225788180957, guid: ad025cf1d505e45419e0b760a4e74568,
+        type: 3}
+      propertyPath: FirstPos
+      value: 
+      objectReference: {fileID: 380064200}
     - target: {fileID: 5680525225788180957, guid: ad025cf1d505e45419e0b760a4e74568,
         type: 3}
       propertyPath: wayPointA
@@ -4284,10 +4289,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213636222758371435, guid: ad025cf1d505e45419e0b760a4e74568,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 888953879116129261, guid: ad025cf1d505e45419e0b760a4e74568,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.98
+      value: 12.24
       objectReference: {fileID: 0}
     - target: {fileID: 888953879116129261, guid: ad025cf1d505e45419e0b760a4e74568,
         type: 3}
@@ -4339,6 +4349,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Chomper
       objectReference: {fileID: 0}
+    - target: {fileID: 5680525225788180957, guid: ad025cf1d505e45419e0b760a4e74568,
+        type: 3}
+      propertyPath: FirstPos
+      value: 
+      objectReference: {fileID: 1117796014}
     - target: {fileID: 5680525225788180957, guid: ad025cf1d505e45419e0b760a4e74568,
         type: 3}
       propertyPath: wayPointA
