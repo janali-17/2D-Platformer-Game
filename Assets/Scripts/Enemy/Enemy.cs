@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform wayPointA, wayPointB;
     [SerializeField] private float speed;
+    [SerializeField] private Transform FirstPos;
 
     private Vector3 currentTarget;
     private SpriteRenderer spriteRenderer;
@@ -16,6 +17,10 @@ public class Enemy : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+    }
+    private void Start()
+    {
+        currentTarget = FirstPos.position;
     }
 
     private void Update()
@@ -36,8 +41,8 @@ public class Enemy : MonoBehaviour
         { 
             currentTarget = wayPointA.position  ;
             spriteRenderer.flipX = true;
-
         }
+
 
         transform.position = Vector3.MoveTowards(transform.position,currentTarget,speed * Time.deltaTime);
 
