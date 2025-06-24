@@ -46,4 +46,13 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("Idle");
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>() != null)
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            player.PlayerDamage();
+        }
+    }
 }

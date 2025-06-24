@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     private const string IS_RUNNING = "IsRunning";
     private const string JUMP = "Jump";
     private const string CROUCH = "Crouch";
+    private const string DEATH = "Death";
 
     [SerializeField]private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -17,11 +19,20 @@ public class PlayerController : MonoBehaviour
 
     private float jump;
     private bool crouch;
+    private int playerHealth = 3;
+    private bool isDead;
 
 
     // Update is called once per frame
     void Update()
     {
+        if(playerHealth == 0 && !isDead)
+        {
+            isDead = true;
+            animator.SetTrigger(DEATH);
+            StartCoroutine(PlayerDeathAnimation());
+            return;
+        }
         float horizontal = Input.GetAxisRaw("Horizontal");
         jump = Input.GetAxisRaw("Jump");
         PLayerMovementAnimation(horizontal);
@@ -80,5 +91,19 @@ public class PlayerController : MonoBehaviour
     {
         int score = 10;
         scoreController.IncrementScore(score); 
+    }
+
+    public void PlayerDamage()
+    {
+        playerHealth--;
+    }
+
+    IEnumerator PlayerDeathAnimation()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(1);
+
+
     }
 }
