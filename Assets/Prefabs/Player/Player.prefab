@@ -125,7 +125,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4077896047764827453}
   rb: {fileID: 6761157793831845304}
   speed: 5
-  jumpForce: 10
+  jumpForce: 5
+  scoreController: {fileID: 0}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!95 &2976569588771274210
 Animator:
   serializedVersion: 5
