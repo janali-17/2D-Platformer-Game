@@ -10,13 +10,18 @@ public class Enemy : MonoBehaviour
 
     private Vector3 currentTarget;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("EnemyIdle_Chomper"))
+            return;
         EnemyMovement();
     }
 
@@ -35,5 +40,10 @@ public class Enemy : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position,currentTarget,speed * Time.deltaTime);
+
+        if(transform.position == currentTarget)
+        {
+            animator.SetTrigger("Idle");
+        }
     }
 }
