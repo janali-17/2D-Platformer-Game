@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerHealth == 0 && !isDead)
+        if(playerHealth <= 0 && !isDead)
         {
             isDead = true;
             animator.SetTrigger(DEATH);
