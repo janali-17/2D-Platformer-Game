@@ -36,8 +36,8 @@ public class Enemy : MonoBehaviour
         { 
             currentTarget = wayPointA.position  ;
             spriteRenderer.flipX = true;
-
         }
+
 
         transform.position = Vector3.MoveTowards(transform.position,currentTarget,speed * Time.deltaTime);
 
